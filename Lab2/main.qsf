@@ -612,5 +612,8 @@ set_global_assignment -name VERILOG_FILE mux2_1.v
 set_global_assignment -name VERILOG_FILE Part2_Mux4.v
 set_global_assignment -name VERILOG_FILE Part2_BinToBCD.v
 set_global_assignment -name VERILOG_FILE Part2_CircuitB.v
+set_global_assignment -name VERILOG_FILE Part4_Comparator.v
+set_global_assignment -name VERILOG_FILE Part4_CircuitA.v
+set_global_assignment -name VERILOG_FILE Part4_BCDAdder.v
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"

@@ -47,9 +47,32 @@ module main(
 	FullAdder FA2(.ci(c2),    .a(SW[6]), .b(SW[2]), .s(sum[2]), .co(c3));
 	FullAdder FA3(.ci(c3),    .a(SW[7]), .b(SW[3]), .s(sum[3]), .co(cout));
 
-	assign LEDR[9:6] = SW[9:6];
+	assign LEDR[8:6] = SW[8:6];
 	assign LEDR[5]   = cout | (sum[3] & (sum[2] | (sum[1] & sum[0])));
 	assign LEDR[4]   = cout;
 	assign LEDR[3:0] = sum;
+
+	// Part V
+	wire [3:0] B0 = 4'd5;
+	wire [3:0] B1 = 4'd4;
+	wire c1_5;
+	wire [3:0] S0;
+	wire [3:0] S1;
+	wire S2;
+
+	Part4_BCDAdder ADD0(.ci(1'b0), .a(SW[3:0]), .b(B0), .s(S0), .cout(c1_5));
+	Part4_BCDAdder ADD1(.ci(c1_5), .a(SW[7:4]), .b(B1), .s(S1), .cout(S2));
+
+	Seg7_Decoder D3(
+		.m(S0),
+		.out(HEX4)
+	);
+
+	Seg7_Decoder D4(
+		.m(S1),
+		.out(HEX5)
+	);
+
+	assign LEDR[9] = S2;
 
 endmodule
