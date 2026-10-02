@@ -19,9 +19,13 @@ I needed to convert a 4-bit binary value V (0–15) into two decimal digits d1 d
 
 ### Logic design
 
-| Comparator (z = v3 & (v2 | v1)) | Circuit A (correction bits) |
-|---|---|
-| <img src="screenshots/part2/P2_Comp_TT.png" alt="Comparator truth table" width="450"> | <img src="screenshots/part2/p2_circuitA_TT.png" alt="Circuit A truth table" width="450"> |
+Comparator truth table (z = v3 & (v2 | v1)):
+
+<img src="screenshots/part2/P2_Comp_TT.png" alt="Comparator truth table" width="450">
+
+Circuit A truth table (correction bits):
+
+<img src="screenshots/part2/p2_circuitA_TT.png" alt="Circuit A truth table" width="450">
 
 z is 1 whenever V is greater than 9. Circuit A produces the bits needed to turn the raw binary value into the correct ones digit once z is 1.
 
