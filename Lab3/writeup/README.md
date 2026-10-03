@@ -25,10 +25,6 @@ Tech Viewer: Quartus folded the whole latch into one LOGIC_CELL_COMB node with a
 
 Figure 4's D latch, built from NAND gates using the same logic-expression style: R = ~D, S_g = ~(D & Clk), R_g = ~(R & Clk), Qa = ~(S_g & Qb), Qb = ~(R_g & Qa), Q = Qa. This time R, S_g, R_g, Qa, Qb all carry synthesis keep so each stays a separate element instead of collapsing like Part I did.
 
-<img src="screenshots/p2/p2_code.png" alt="Part II source" width="500">
-
-Source, matching the handout's Figure 2b style applied to the NAND-based D latch instead of the NOR-based RS latch.
-
 <img src="screenshots/p2/p2_truth.png" alt="Part II truth table" width="250">
 
 Truth table for the latch: transparent (Qa = D) whenever Clk = 1; holds its last value when Clk = 0, hence the don't care rows.
