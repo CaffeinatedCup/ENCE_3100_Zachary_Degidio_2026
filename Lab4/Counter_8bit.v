@@ -1,69 +1,67 @@
-module Counter_8bit(
+module P1_Counter_8bit(
 	input ena,
 	input clk,
 	input clear,
 	output [7:0] count
 );
 
-	wire [6:0] w_and;
-	wire [7:0] w_out;
-	
-	assign count = w_out;
-	
-	assign w_and[0] = ena & w_out[0];
-	assign w_and[1] = w_and[0] & w_out[1];
-	assign w_and[2] = w_and[1] & w_out[2];
-	assign w_and[3] = w_and[2] & w_out[3];
-	assign w_and[4] = w_and[3] & w_out[4];
-	assign w_and[5] = w_and[4] & w_out[5];
-	assign w_and[6] = w_and[5] & w_out[6];
-	
+	wire [6:0] and_chain;
+
+	assign and_chain[0] = ena & count[0];
+	assign and_chain[1] = and_chain[0] & count[1];
+	assign and_chain[2] = and_chain[1] & count[2];
+	assign and_chain[3] = and_chain[2] & count[3];
+	assign and_chain[4] = and_chain[3] & count[4];
+	assign and_chain[5] = and_chain[4] & count[5];
+	assign and_chain[6] = and_chain[5] & count[6];
+
 	TFlipFlop TFF_0(
-	.T(ena),
-	.clk(clk),
-	.clear(clear),
-	.Qt(w_out[0])
-);
+		.T(ena),
+		.clk(clk),
+		.clear(clear),
+		.Qt(count[0])
+	);
 	TFlipFlop TFF_1(
-	.T(w_and[0]),
-	.clk(clk),
-	.clear(clear),
-	.Qt(w_out[1])
-);
+		.T(and_chain[0]),
+		.clk(clk),
+		.clear(clear),
+		.Qt(count[1])
+	);
 	TFlipFlop TFF_2(
-	.T(w_and[1]),
-	.clk(clk),
-	.clear(clear),
-	.Qt(w_out[2])
-);
+		.T(and_chain[1]),
+		.clk(clk),
+		.clear(clear),
+		.Qt(count[2])
+	);
 	TFlipFlop TFF_3(
-	.T(w_and[2]),
-	.clk(clk),
-	.clear(clear),
-	.Qt(w_out[3])
-);
+		.T(and_chain[2]),
+		.clk(clk),
+		.clear(clear),
+		.Qt(count[3])
+	);
 	TFlipFlop TFF_4(
-	.T(w_and[3]),
-	.clk(clk),
-	.clear(clear),
-	.Qt(w_out[4])
-);
+		.T(and_chain[3]),
+		.clk(clk),
+		.clear(clear),
+		.Qt(count[4])
+	);
 	TFlipFlop TFF_5(
-	.T(w_and[4]),
-	.clk(clk),
-	.clear(clear),
-	.Qt(w_out[5])
-);
+		.T(and_chain[4]),
+		.clk(clk),
+		.clear(clear),
+		.Qt(count[5])
+	);
 	TFlipFlop TFF_6(
-	.T(w_and[5]),
-	.clk(clk),
-	.clear(clear),
-	.Qt(w_out[6])
-);
+		.T(and_chain[5]),
+		.clk(clk),
+		.clear(clear),
+		.Qt(count[6])
+	);
 	TFlipFlop TFF_7(
-	.T(w_and[6]),
-	.clk(clk),
-	.clear(clear),
-	.Qt(w_out[7])
-);
+		.T(and_chain[6]),
+		.clk(clk),
+		.clear(clear),
+		.Qt(count[7])
+	);
+
 endmodule
